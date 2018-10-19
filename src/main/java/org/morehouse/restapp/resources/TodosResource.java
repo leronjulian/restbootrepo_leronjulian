@@ -31,8 +31,8 @@ public class TodosResource {
 	// you need to work on, given below.
 	// To test: http://localhost:8080/morehouse/restapp/todos
 	//   HTTP method: GET
-    //   Accept:  application/json
-	
+    	//   Accept:  application/json
+	@RequestMapping(method = RequestMethod.GET, produces = { "application/json", "application/xml"  })
 	public List<Todo> retrieveAllTodos() {
 		return todoRepository.findAll();
 	}
@@ -45,8 +45,8 @@ public class TodosResource {
 	//         depending on client request. 
 	// To test: http://localhost:7070/morehouse/restapp/todos/1
 	//   HTTP method: GET
-    //   Accept:  application/json   or application/xml
-	
+    	//   Accept:  application/json   or application/xml
+	@RequestMapping(value="/{id}", method = RequestMethod.GET, produces = { "application/json", "application/xml"  })
 	public Todo retrieveTodo(@PathVariable long id) {
 		// Retrieve a row from the todo table in the H2 database
 		// using the id passed by client via URL
@@ -64,7 +64,7 @@ public class TodosResource {
 	//         Note that id will be auto-generated 
 	//            in the Todos database table
 	// Accept: application/json
-	
+	@RequestMapping(method = RequestMethod.POST,produces = { "application/json", "application/xml"  } )
 	public Todo createTodo(@RequestBody Todo todo) {
 		Todo savedTodo = todoRepository.save(todo);
 		return savedTodo;
@@ -76,7 +76,7 @@ public class TodosResource {
 	// To test: http://localhost:7070/morehouse/restapp/todos/<id>
 	//    Note: Make sure the id you pass exists in the Todo table
 	// HTTP method: DELETE
-	
+	@RequestMapping(method = RequestMethod.DELETE, value = "/{id}" )
 	public String deleteTodo(@PathVariable long id) {
 		todoRepository.deleteById(id);
 		return "row " + id + " deleted";
@@ -92,7 +92,7 @@ public class TodosResource {
 	// Body:  {"id":6,"title":"To Kill a Mockingbird","status":"OUT","dueDate":"2018-10-22","comment":"on-line checkout","assignee":"Robin Hood"}
 	//        This assumes there is a row in the Todos database table
 	//        with id = 6
-	
+	@RequestMapping(method = RequestMethod.PUT, value = "/{id}", produces = { "application/json"} )
 	public ResponseEntity<Object> updateTodo(@RequestBody Todo todo, @PathVariable long id) {
 
 		Optional<Todo> todoOptional = todoRepository.findById(id);
