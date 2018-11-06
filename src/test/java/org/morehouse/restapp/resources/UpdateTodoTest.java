@@ -40,7 +40,40 @@ public class UpdateTodoTest {
 		assertFalse(isValid);
 	}
 	
-	//testSetAssignee (+) //EX
+	/*
+	//testSetAssignee (+)
+	@Test
+	public void testSetAssignee() {
+		//setup
+		TodosResource resource = new TodosResource();
+		Todo existing = new Todo();
+		existing.setAssignee("someone");
+		
+		//execute
+		boolean isValid = resource.validateUpdate(existing, update);
+		
+		//validate
+		assertTrue(isValid);
+	}
+	*/
+	
 	
 	//testLeaveAssigneeBlank (+) //EC
+	@Test
+	public void testLeaveAssigneeBlank() {
+		//setup
+		TodosResource resource = new TodosResource();
+		Todo existing = new Todo();
+		existing.setAssignee("");
+		Todo update = new Todo();
+		update.setAssignee("");
+				
+		//execute
+		boolean isValid = resource.validateUpdate(existing, update);
+				
+		//validate
+		assertTrue(isValid);
+		
+	}
+	
 }
