@@ -40,7 +40,7 @@ public class UpdateTodoTest {
 		assertFalse(isValid);
 	}
 	
-	/*
+	
 	//testSetAssignee (+)
 	@Test
 	public void testSetAssignee() {
@@ -48,6 +48,8 @@ public class UpdateTodoTest {
 		TodosResource resource = new TodosResource();
 		Todo existing = new Todo();
 		existing.setAssignee("someone");
+		Todo update = new Todo();
+		update.setAssignee("someone");
 		
 		//execute
 		boolean isValid = resource.validateUpdate(existing, update);
@@ -55,7 +57,7 @@ public class UpdateTodoTest {
 		//validate
 		assertTrue(isValid);
 	}
-	*/
+	
 	
 	
 	//testLeaveAssigneeBlank (+) //EC
