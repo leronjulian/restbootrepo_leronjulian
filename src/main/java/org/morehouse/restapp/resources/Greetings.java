@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/hello")
+@RequestMapping("/hello/{name}/{locale}")
 public class Greetings {
 	@RequestMapping(value = "/{param}", method = RequestMethod.GET)
 	  public String printMessage(@PathVariable("param") String msg) {
