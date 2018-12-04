@@ -32,6 +32,7 @@ public class TodosResource {
 	// To test: http://localhost:8080/morehouse/restapp/todos
 	//   HTTP method: GET
     	//   Accept:  application/json
+	@RequestMapping(method = RequestMethod.GET, produces = { "application/json", "application/xml"  })
 	public List<Todo> retrieveAllTodos() {
 		return todoRepository.findAll();
 	}
@@ -91,7 +92,7 @@ public class TodosResource {
 	// Body:  {"id":6,"title":"To Kill a Mockingbird","status":"OUT","dueDate":"2018-10-22","comment":"on-line checkout","assignee":"Robin Hood"}
 	//        This assumes there is a row in the Todos database table
 	//        with id = 6
-	@RequestMapping(method = RequestMethod.PUT, value = "/{id}", produces = { "application/json"} )
+	@RequestMapping(path = "/{id}", method = RequestMethod.PUT, produces = { "application/json", "application/xml"  })
 	public ResponseEntity<Object> updateTodo(@RequestBody Todo todo, @PathVariable long id) {
 
 		Optional<Todo> todoOptional = todoRepository.findById(id);
